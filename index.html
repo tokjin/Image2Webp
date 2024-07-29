@@ -14,22 +14,42 @@
             margin-top: 20px;
         }
         .container {
-            max-width: 600px;
+            max-width: 800px;
             margin: auto;
             background: white;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+        .preview {
+            margin-top: 20px;
+            display: none;
+        }
+        .preview img {
+            max-width: 100%;
+            height: auto;
+        }
+        .drop-zone {
+            border: 2px dashed #007bff;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            color: #007bff;
+            cursor: pointer;
+        }
+        .drop-zone.dragover {
+            background-color: #e9ecef;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1 class="text-center">Image to WEBP Converter</h1>
-        <div class="form-group">
-            <label for="imageUpload">Select an image (JPEG or PNG):</label>
-            <input type="file" class="form-control-file" id="imageUpload" accept="image/jpeg, image/png">
+        <br>
+        <div class="drop-zone" id="dropZone">
+            Drag & Drop your image here or click to select
         </div>
+        <br>
         <div class="form-group">
             <label for="compressionType">Compression Type:</label>
             <select class="form-control" id="compressionType">
@@ -43,6 +63,12 @@
         </div>
         <button id="convertButton" class="btn btn-primary btn-block">Convert to WEBP</button>
         <a id="downloadLink" class="btn btn-success btn-block" style="display: none;">Download WEBP</a>
+        <div class="preview" id="preview">
+            <h3>Original Image:</h3>
+            <img id="originalImage" src="" alt="Original Image">
+            <h3>Converted Image:</h3>
+            <img id="convertedImage" src="" alt="Converted Image">
+        </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
     <script src="convert.js"></script>
